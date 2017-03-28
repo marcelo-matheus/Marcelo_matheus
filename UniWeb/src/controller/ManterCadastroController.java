@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import banco.de.dados.Model.Cadastro;
 import service.CadastroService;
+
 
 /**
  * Servlet implementation class ManterCadastroController
@@ -86,11 +88,18 @@ public class ManterCadastroController extends HttpServlet {
 		//instanciar o service
 		CadastroService cs = new CadastroService();
 		cs.InserirCadastro(cadastro);
-		cadastro = cs.carregar(cadastro.getId());;
+		//cadastro = cs.carregar(cadastro.getId());;
 		
-		PrintWriter out = response.getWriter();
+		 //enviar para o jsp
+        request.setAttribute("cadastro", cadastro);
+        
+        RequestDispatcher view = 
+        request.getRequestDispatcher("Cadastro.jsp");
+        view.forward(request, response);
+		
+		/*PrintWriter out = response.getWriter();
 		out.println("<html><head><title>Usuario Cadastrado</title></head><body>");
-		out.println(	"id: "+cadastro.getId()+"<br>");
+		out.println(	"Casdastro feito com sucesso""id: "+cadastro.getId()+"<br>");
 		out.println(	"nome: "+cadastro.getNome_Completo()+"<br>");
 		out.println(	"Data de nacimento: "+cadastro.getData_de_Nascimento()+"<br>");
 		out.println(	"Sexo: "+cadastro.getSexo()+"<br>");
@@ -119,7 +128,7 @@ public class ManterCadastroController extends HttpServlet {
 		out.println(	"Categoria: "+cadastro.getCategoria()+"<br>");
 		
 		
-	    out.println("</body></html>");
+	    out.println("</body></html>");*/
 		
 	}
 

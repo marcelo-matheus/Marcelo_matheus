@@ -5,9 +5,14 @@ import banco.de.dados.Model.Cadastro;
 
 
 
+
+
+
+
 public class CadastroService {
 	
 	CadastroDAO dao = new CadastroDAO();
+	
 	
 	
 	public Cadastro InserirCadastro(Cadastro ca) {
@@ -22,6 +27,9 @@ public class CadastroService {
 	public boolean CheckEmail(String Email) {
 		return dao.CheckEmail(Email);
 	}
+	
+	
+	
 	
 	public Cadastro carregar(int id){
 		return dao.carregar(id);
