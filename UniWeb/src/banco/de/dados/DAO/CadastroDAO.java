@@ -27,8 +27,8 @@ public class CadastroDAO {
 			stmt = con.prepareStatement(
 					"INSERT INTO cadastro (Nome_Completo, Data_de_Nascimento, Sexo, CPF, RG, CEP, Endereco, Numero, Complemento, Bairro, Cidade, UF, Email, Telefone_Residencial, Telefone_Celular, Universidade, EnderecoUniversidade, Curso, Usuario, Senha, PerguntaSecreta, Cargo, Categoria)VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-			stmt.setString(1, ca.getNome_Completo());
-			stmt.setString(2, ca.getData_de_Nascimento());
+			stmt.setString(1, ca.getNomeCompleto());
+			stmt.setString(2, ca.getDataDeNascimento());
 			stmt.setString(3, ca.getSexo());
 			stmt.setString(4, ca.getCPF());
 			stmt.setString(5, ca.getRG());
@@ -40,7 +40,7 @@ public class CadastroDAO {
 			stmt.setString(11, ca.getCidade());
 			stmt.setString(12, ca.getUF());
 			stmt.setString(13, ca.getEmail());
-			stmt.setString(14, ca.getTelefone_Residencial());
+			stmt.setString(14, ca.getTelefoneResidencial());
 			stmt.setString(15, ca.getTelefone_Celular());
 			stmt.setString(16, ca.getUniversidade());
 			stmt.setString(17, ca.getEnderecoUniversidade());
@@ -130,7 +130,7 @@ public class CadastroDAO {
 				Cadastro cadastro = new Cadastro();
 
 				cadastro.setId(rs.getInt(1));
-				cadastro.setNome_Completo(rs.getString(2));
+				cadastro.setNomeCompleto(rs.getString(2));
 				cadastro.setEmail(rs.getString(14));
 				cadastro.setCargo(rs.getString(23));
 				cadastro.setCategoria(rs.getString(24));
@@ -167,7 +167,7 @@ public class CadastroDAO {
 				Cadastro cadastro = new Cadastro();
 
 				cadastro.setId(rs.getInt(1));
-				cadastro.setNome_Completo(rs.getString(2));
+				cadastro.setNomeCompleto(rs.getString(2));
 				cadastro.setEmail(rs.getString(14));
 				cadastro.setCargo(rs.getString(23));
 				cadastro.setCategoria(rs.getString(24));
@@ -202,7 +202,7 @@ public class CadastroDAO {
 				Cadastro cadastro = new Cadastro();
 
 				cadastro.setId(rs.getInt(1));
-				cadastro.setNome_Completo(rs.getString(2));
+				cadastro.setNomeCompleto(rs.getString(2));
 				cadastro.setEmail(rs.getString(14));
 				cadastro.setCargo(rs.getString(23));
 				cadastro.setCategoria(rs.getString(24));
@@ -237,7 +237,7 @@ public class CadastroDAO {
 				Cadastro cadastro = new Cadastro();
 
 				cadastro.setId(rs.getInt(1));
-				cadastro.setNome_Completo(rs.getString(2));
+				cadastro.setNomeCompleto(rs.getString(2));
 				cadastro.setEmail(rs.getString(14));
 				cadastro.setCargo(rs.getString(23));
 				cadastro.setCategoria(rs.getString(24));
@@ -272,7 +272,7 @@ public class CadastroDAO {
 				Cadastro cadastro = new Cadastro();
 
 				cadastro.setId(rs.getInt(1));
-				cadastro.setNome_Completo(rs.getString(2));
+				cadastro.setNomeCompleto(rs.getString(2));
 				cadastro.setEmail(rs.getString(14));
 				cadastro.setCargo(rs.getString(23));
 				cadastro.setCategoria(rs.getString(24));
@@ -306,8 +306,8 @@ public class CadastroDAO {
 				if (rs.next()) {
 					
 					
-					cadastro.setNome_Completo(rs.getString("Nome_Completo"));
-					cadastro.setData_de_Nascimento(rs.getString("Data_de_Nascimento"));
+					cadastro.setNomeCompleto(rs.getString("Nome_Completo"));
+					cadastro.setDataDeNascimento(rs.getString("Data_de_Nascimento"));
 					cadastro.setSexo(rs.getString("Sexo"));
 					
 					cadastro.setCPF(rs.getString("CPF"));
@@ -320,7 +320,7 @@ public class CadastroDAO {
 					cadastro.setCidade(rs.getString("Cidade"));
 					cadastro.setUF(rs.getString("UF"));
 					cadastro.setEmail(rs.getString("Email"));
-					cadastro.setTelefone_Residencial(rs.getString("Telefone_Residencial"));
+					cadastro.setTelefoneResidencial(rs.getString("Telefone_Residencial"));
 					cadastro.setTelefone_Celular(rs.getString("Telefone_Celular"));
 					cadastro.setUniversidade(rs.getString("Universidade"));
 					cadastro.setEnderecoUniversidade(rs.getString("EnderecoUniversidade"));
@@ -334,8 +334,8 @@ public class CadastroDAO {
 					
 				} else {
 					cadastro.setId(-1);
-					cadastro.setNome_Completo(null);
-					cadastro.setTelefone_Residencial(null);
+					cadastro.setNomeCompleto(null);
+					cadastro.setTelefoneResidencial(null);
 					cadastro.setEmail(null);
 				}
 			} catch (SQLException e) {
@@ -346,5 +346,42 @@ public class CadastroDAO {
 		}
 		return cadastro;
 	}
+	
+	
+	public List<Cadastro> carregarTodosCadastro() {
+		Cadastro cadastro;
+		
+		List<Cadastro> lista = new ArrayList<Cadastro>();
+		
+		String sqlSelect = "SELECT id,Nome_Completo,Data_de_Nascimento,Sexo, Telefone_Residencial, Email FROM cadastro;";
+		// usando o try with resources do Java 7, que fecha o que abriu
+		try (Connection conn = ConnectionFactory.getConnection();
+				PreparedStatement stm = conn.prepareStatement(sqlSelect);) {
+			
+			try (ResultSet rs = stm.executeQuery();) {
+				while (rs.next()) {
+					
+					cadastro = new Cadastro();
+					
+					cadastro.setId(rs.getInt("Id"));
+					cadastro.setNomeCompleto(rs.getString("Nome_Completo"));
+					cadastro.setDataDeNascimento(rs.getString("Data_de_Nascimento"));
+					cadastro.setSexo(rs.getString("Sexo"));
+					
+					cadastro.setTelefoneResidencial(rs.getString("Telefone_Residencial"));
+					cadastro.setEmail(rs.getString("Email"));
+					
+					lista.add(cadastro);
+					
+				} 
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} catch (SQLException e1) {
+			System.out.print(e1.getStackTrace());
+		}
+		return lista;
+	}
+
 
 }

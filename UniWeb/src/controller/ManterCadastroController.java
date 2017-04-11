@@ -61,8 +61,8 @@ public class ManterCadastroController extends HttpServlet {
 		Cadastro cadastro = new Cadastro();
 		
 		
-		cadastro.setNome_Completo(pNome_Completo);
-		cadastro.setData_de_Nascimento(pData_de_Nascimento);
+		cadastro.setNomeCompleto(pNome_Completo);
+		cadastro.setDataDeNascimento(pData_de_Nascimento);
 		cadastro.setSexo(pSexo);
 		cadastro.setCPF(pCPF);
 		cadastro.setRG(pRG);
@@ -74,7 +74,7 @@ public class ManterCadastroController extends HttpServlet {
 		cadastro.setCidade(pCidade);
 		cadastro.setUF(pUF);
 		cadastro.setEmail(pEmail);
-		cadastro.setTelefone_Residencial(pTelefone_Residencial);
+		cadastro.setTelefoneResidencial(pTelefone_Residencial);
 		cadastro.setTelefone_Celular(pTelefone_Celular);
 		cadastro.setUniversidade(pUniversidade);
 		cadastro.setEnderecoUniversidade(pEnderecoUniversidade);

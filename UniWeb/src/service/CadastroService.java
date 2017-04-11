@@ -1,7 +1,10 @@
 package service;
 
+import java.util.List;
+
 import banco.de.dados.DAO.CadastroDAO;
 import banco.de.dados.Model.Cadastro;
+
 
 
 
@@ -33,6 +36,10 @@ public class CadastroService {
 	
 	public Cadastro carregar(int id){
 		return dao.carregar(id);
+	}
+	
+	public List<Cadastro> carregarTodosCadastro(){
+		return dao.carregarTodosCadastro();
 	}
 	
 }

@@ -11,7 +11,12 @@
 <title>Cliente</title>
 </head>
 <body>
+<c:import url="Menu.jsp"/>
 	<%Cadastro cadastro = (Cadastro)request.getAttribute("cadastro"); %>
 	<h1>Cadastro realizado</h1>
+	
+	
+	<script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

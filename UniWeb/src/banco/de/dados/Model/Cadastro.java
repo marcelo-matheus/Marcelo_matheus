@@ -3,10 +3,10 @@ package banco.de.dados.Model;
 public class Cadastro {
     
 	private int Id;
-    private String Nome_Completo;
-    private String Data_de_Nascimento;
-    private String Sexo;
-    private String CPF;
+    private String nome;
+    private String datadenascimento;
+    private String sexo;
+    private String cpf;
     private String RG;
     private String CEP;
     private String Endereco;
@@ -15,8 +15,8 @@ public class Cadastro {
     private String Bairro;
     private String Cidade;
     private String UF;
-    private String Email;
-    private String Telefone_Residencial;
+    private String email;
+    private String telefoneresidencial;
     private String Telefone_Celular;
     private String Universidade;
     private String EnderecoUniversidade;
@@ -28,36 +28,36 @@ public class Cadastro {
     private String Cargo ;
     private String Categoria ;
 
-    public String getNome_Completo() {
-        return Nome_Completo;
+    public String getNomeCompleto() {
+        return nome;
     }
 
-    public void setNome_Completo(String Nome_Completo) {
-        this.Nome_Completo = Nome_Completo;
+    public void setNomeCompleto(String NomeCompleto) {
+        this.nome = NomeCompleto;
     }
 
-    public String getData_de_Nascimento() {
-        return Data_de_Nascimento;
+    public String getDataDeNascimento() {
+        return datadenascimento;
     }
 
-    public void setData_de_Nascimento(String Data_de_Nascimento) {
-        this.Data_de_Nascimento = Data_de_Nascimento;
+    public void setDataDeNascimento(String Data_de_Nascimento) {
+        this.datadenascimento = Data_de_Nascimento;
     }
 
     public String getSexo() {
-        return Sexo;
+        return sexo;
     }
 
     public void setSexo(String Sexo) {
-        this.Sexo = Sexo;
+        this.sexo = Sexo;
     }
 
     public String getCPF() {
-        return CPF;
+        return cpf;
     }
 
     public void setCPF(String CPF) {
-        this.CPF = CPF;
+        this.cpf = CPF;
     }
 
     public String getRG() {
@@ -125,19 +125,19 @@ public class Cadastro {
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public void setEmail(String Email) {
-        this.Email = Email;
+        this.email = Email;
     }
 
-    public String getTelefone_Residencial() {
-        return Telefone_Residencial;
+    public String getTelefoneResidencial() {
+        return telefoneresidencial;
     }
 
-    public void setTelefone_Residencial(String Telefone_Residencial) {
-        this.Telefone_Residencial = Telefone_Residencial;
+    public void setTelefoneResidencial(String Telefone_Residencial) {
+        this.telefoneresidencial = Telefone_Residencial;
     }
 
     public String getTelefone_Celular() {
